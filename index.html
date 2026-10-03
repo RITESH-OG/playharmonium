@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="RaagSetu — a virtual harmonium playable with mouse, touch and computer keyboard.">
+  <title>RaagSetu — Virtual Harmonium</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">ॐ</div>
+        <div>
+          <div class="brand-name">Raag<span>Setu</span></div>
+          <div class="brand-sub">VIRTUAL HARMONIUM</div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a class="active" href="#instrument">⌂ Home</a>
+        <a href="#shortcuts">▤ Guide</a>
+        <a href="#instrument">♬ Practice</a>
+        <a href="#ragas">♩ Ragas</a>
+        <a href="#about">♙ About</a>
+      </nav>
+
+      <div class="top-actions">
+        <button class="icon-btn" id="settingsBtn" title="Settings">⚙</button>
+        <button class="icon-btn" id="themeBtn" title="Toggle theme">☾</button>
+        <button class="app-btn" id="appBtn">▣ &nbsp; Get App</button>
+        <button class="icon-btn" id="helpBtn" title="Help">♧</button>
+      </div>
+    </header>
+
+    <main id="instrument">
+      <section class="control-panel">
+        <button class="control record-control" id="recordBtn">
+          <span class="record-dot"></span><span id="recordText">Record</span>
+        </button>
+
+        <div class="divider"></div>
+
+        <label class="switch-control">
+          <span>Reverb</span>
+          <input id="reverbToggle" type="checkbox" checked>
+          <span class="switch"></span>
+        </label>
+
+        <div class="divider"></div>
+
+        <div class="slider-control">
+          <span class="speaker">◖)))</span>
+          <span>Volume</span>
+          <input id="volume" type="range" min="0" max="1" step="0.01" value="0.72">
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="step-control">
+          <span>Transpose</span><strong id="transposeValue">C</strong>
+          <button data-action="transposeDown">−</button>
+          <button data-action="transposeUp">+</button>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="step-control">
+          <span>Octave</span><strong id="octaveValue">3</strong>
+          <button data-action="octaveDown">−</button>
+          <button data-action="octaveUp">+</button>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="step-control">
+          <span>Reeds</span><strong id="reedValue">0</strong>
+          <button data-action="reedDown">−</button>
+          <button data-action="reedUp">+</button>
+        </div>
+      </section>
+
+      <section class="shortcut-bar" id="shortcuts">
+        <div><b>⌨ Keyboard Shortcuts</b></div>
+        <div>🔊 <b>↑ / ↓</b> Volume</div>
+        <div>〽 <b>Tab</b> Reverb</div>
+        <div>← → <b>Transpose</b></div>
+        <div><b>PgUp / PgDn</b> Octave</div>
+        <div><b>Alt + ← / →</b> Reeds</div>
+        <button id="shortcutToggle">Hide ↑</button>
+      </section>
+
+      <section class="harmonium">
+        <div class="side-ornament left">❧<br>❦<br>❧</div>
+        <div class="side-ornament right">❧<br>❦<br>❧</div>
+
+        <div class="harmonium-panel">
+          <div class="cutwork">
+            <span>✦</span><span>◇</span><span>✤</span><span>◇</span><span>✦</span>
+            <div class="instrument-name">❧ &nbsp; RaagSetu &nbsp; ❧</div>
+            <span>✦</span><span>◇</span><span>✤</span><span>◇</span><span>✦</span>
+          </div>
+        </div>
+
+        <div class="keyboard-wrap">
+          <div class="keyboard" id="keyboard" aria-label="Virtual harmonium keyboard"></div>
+        </div>
+
+        <div class="harmonium-bottom"></div>
+      </section>
+
+      <section class="footer-strip" id="about">
+        <span class="info">ⓘ</span>
+        <span>Play with your computer keyboard or click/tap the keys.</span>
+        <span class="footer-brand">〽 &nbsp; RaagSetu &nbsp; | &nbsp; Indian Classical Music for Everyone</span>
+      </section>
+    </main>
+
+    <div class="toast" id="toast"></div>
+
+    <dialog id="settingsDialog">
+      <button class="dialog-close" id="settingsClose">×</button>
+      <h2>RaagSetu Settings</h2>
+      <p>Audio is generated locally in your browser using Web Audio. No music files or server are required.</p>
+      <label>Attack
+        <input id="attack" type="range" min="0.005" max="0.2" step="0.005" value="0.025">
+      </label>
+      <label>Release
+        <input id="release" type="range" min="0.05" max="1.5" step="0.05" value="0.45">
+      </label>
+    </dialog>
+
+    <dialog id="helpDialog">
+      <button class="dialog-close" id="helpClose">×</button>
+      <h2>How to play</h2>
+      <p>Click/tap a white or black key, or use the mapped computer keys shown on each key.</p>
+      <p><b>Space</b> can be used as a quick stop for all currently playing notes.</p>
+      <p>Recording captures the synthesized instrument audio directly in your browser.</p>
+    </dialog>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
